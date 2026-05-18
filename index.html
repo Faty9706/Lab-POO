@@ -43,6 +43,25 @@ function login(){
   }
 }
 </script>
+<!-- BOTON CHAT -->
+<div id="chat-boton" onclick="abrirChat()">💬</div>
 
+<!-- VENTANA CHAT -->
+<div id="chat-ventana">
+  <div class="chat-header">
+    Asistente 🤖
+    <span onclick="cerrarChat()">✖</span>
+  </div>
+
+  <div id="chat-mensajes"></div>
+
+  <div class="chat-input">
+    <input id="chatInput" placeholder="Escribe algo...">
+    <button onclick="enviarMensaje()">Enviar</button>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
 </body>
 </html>
