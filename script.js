@@ -64,15 +64,16 @@ function volverTienda(){
 // CONFIRMAR COMPRA
 // ===============================
 function confirmarCompra(){
-  if(carrito.length==0){
+  if(carrito.length===0){
     alert("Tu carrito está vacío 😢");
     return;
   }
 
-  document.getElementById("carrito").innerHTML = `
-     <h2>🎉 Compra realizada</h2>
-     <p>Nos pondremos en contacto contigo pronto.</p>
-     <button onclick="location.reload()">Volver al inicio</button>
+  let carritoSection = document.getElementById("carrito");
+  carritoSection.innerHTML = `
+      <h2>🎉 Compra realizada</h2>
+      <p>Nos comunicaremos contigo pronto.</p>
+      <button onclick="location.reload()">Volver al inicio</button>
   `;
 }
 

@@ -43,25 +43,58 @@ function login(){
   }
 }
 </script>
-<!-- BOTON CHAT -->
+<!-- BOTÓN FLOTANTE -->
 <div id="chat-boton" onclick="abrirChat()">💬</div>
 
-<!-- VENTANA CHAT -->
+<!-- VENTANA -->
 <div id="chat-ventana">
-  <div class="chat-header">
-    Asistente 🤖
-    <span onclick="cerrarChat()">✖</span>
+  <div id="chat-header">
+    Soporte AutoFix <span onclick="cerrarChat()">✖</span>
   </div>
 
   <div id="chat-mensajes"></div>
 
-  <div class="chat-input">
-    <input id="chatInput" placeholder="Escribe algo...">
+  <div id="chat-input">
+    <input id="chatInput" placeholder="Escribe mensaje...">
     <button onclick="enviarMensaje()">Enviar</button>
   </div>
 </div>
-<script src="script.js"></script>
-</body>
-</html>
+<!-- ===== TIENDA ===== -->
+<section id="tienda">
+  <h2>Servicios disponibles</h2>
+
+  <div class="producto">
+    <img src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png">
+    <h3>Cambio de aceite</h3>
+    <p>$500</p>
+    <button onclick="agregarCarrito('Cambio de aceite',500)">Agregar</button>
+  </div>
+
+  <div class="producto">
+    <img src="https://cdn-icons-png.flaticon.com/512/1995/1995470.png">
+    <h3>Alineación</h3>
+    <p>$300</p>
+    <button onclick="agregarCarrito('Alineación',300)">Agregar</button>
+  </div>
+
+  <div class="producto">
+    <img src="https://cdn-icons-png.flaticon.com/512/2967/2967350.png">
+    <h3>Diagnóstico</h3>
+    <p>$250</p>
+    <button onclick="agregarCarrito('Diagnóstico',250)">Agregar</button>
+  </div>
+
+  <br><br>
+  <button onclick="verCarrito()">🛒 Ver carrito</button>
+</section>
+<!-- ===== CARRITO ===== -->
+<section id="carrito" style="display:none">
+  <h2>Tu carrito</h2>
+  <ul id="listaCarrito"></ul>
+  <h3 id="total"></h3>
+
+  <button onclick="volverTienda()">⬅ Volver a tienda</button>
+  <button onclick="confirmarCompra()">Confirmar compra</button>
+</section>
 </body>
 </html>
