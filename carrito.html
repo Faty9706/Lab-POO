@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header><h1>Carrito</h1></header>
+
+<div class="container">
+<ul id="lista"></ul>
+<h2 id="total"></h2>
+
+<input id="nombreCliente" placeholder="Tu nombre completo">
+<input id="telefonoCliente" placeholder="Teléfono">
+
+<button onclick="comprar()">Confirmar compra</button>
+</div>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
+
+const supabase = createClient("https://eexxczsqyeuyvtahvktj.supabase.co","sb_publishable_zKjJS82J3SNS5_oImGT-Lg_NQIISEFu")
+
+const carrito = JSON.parse(localStorage.getItem("carrito")) || []
+let total = 0
+
+carrito.forEach(item=>{
+  lista.innerHTML += `<li>${item.s} - $${item.p}</li>`
+  total += item.p
+})
+
+total.innerText = "Total: $" + total
+
+async function comprar(){
+
+  if(carrito.length == 0){
+    alert("Carrito vacío")
+    return
+  }
+
+  const nombre = nombreCliente.value
+  const telefono = telefonoCliente.value
+
+  const servicios = carrito.map(i => i.s).join(", ")
+
+  const { error } = await supabase.from("ordenes").insert([{
+    nombre: nombre,
+    servicio: servicios,
+    costo: total,
+    telefono: telefono
+  }])
+
+  if(error){
+    alert("Error al generar orden")
+    console.log(error)
+  }else{
+    alert("Orden enviada al taller 🚗")
+    localStorage.removeItem("carrito")
+    window.location="tienda.html"
+  }
+}
+
+window.comprar = comprar
+</script>
+
+</body>
+</html>

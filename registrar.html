@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header><h1>Nueva Orden</h1></header>
+
+<nav>
+  <a href="dashboard.html">Inicio</a>
+  <a href="ordenes.html">Ver órdenes</a>
+</nav>
+
+<div class="container">
+<input id="nombre" placeholder="Nombre cliente">
+<input id="servicio" placeholder="Servicio">
+<input id="costo" placeholder="Costo">
+<input id="telefono" placeholder="Teléfono">
+<button onclick="guardar()">Registrar</button>
+</div>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
+
+const supabase = createClient("https://eexxczsqyeuyvtahvktj.supabase.co","sb_publishable_zKjJS82J3SNS5_oImGT-Lg_NQIISEFu")
+
+async function guardar(){
+ const { error } = await supabase.from("ordenes").insert([{
+   nombre:nombre.value,
+   servicio:servicio.value,
+   costo:costo.value,
+   telefono:telefono.value
+ }])
+
+ if(error) alert("Error")
+ else alert("Orden guardada")
+}
+window.guardar=guardar
+</script>
+</body>
+</html>

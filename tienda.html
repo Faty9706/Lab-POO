@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header><h1>Servicios</h1></header>
+
+<nav>
+  <a href="carrito.html">Carrito</a>
+  <a href="chat.html">Chat</a>
+  <a href="index.html">Salir</a>
+</nav>
+
+<div class="container">
+<button onclick="agregar('Cambio de aceite',800)">Cambio aceite $800</button>
+<button onclick="agregar('Afinación',1500)">Afinación $1500</button>
+<button onclick="agregar('Frenos',2000)">Frenos $2000</button>
+</div>
+
+<script>
+let carrito=JSON.parse(localStorage.getItem("carrito"))||[]
+function agregar(s,p){
+ carrito.push({s,p})
+ localStorage.setItem("carrito",JSON.stringify(carrito))
+ alert("Agregado al carrito")
+}
+</script>
+</body>
+</html>

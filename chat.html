@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header><h1>Chat Taller</h1></header>
+
+<div class="container">
+<div id="chat"></div>
+<input id="msg">
+<button onclick="enviar()">Enviar</button>
+</div>
+
+<script>
+function enviar(){
+ chat.innerHTML+="<p><b>Tú:</b>"+msg.value+"</p>"
+ let r="Un asesor te contactará"
+ if(msg.value.includes("precio")) r="Servicios desde $800"
+ if(msg.value.includes("horario")) r="9am a 6pm"
+ chat.innerHTML+="<p><b>Taller:</b>"+r+"</p>"
+ msg.value=""
+}
+</script>
+</body>
+</html>

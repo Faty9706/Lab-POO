@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Taller AutoFix</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header><h1>Taller AutoFix</h1></header>
+
+<div class="container">
+  <img class="hero" src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e">
+  <h2>Iniciar sesión</h2>
+
+  <input id="user" placeholder="Usuario">
+  <input id="pass" type="password" placeholder="Contraseña">
+
+  <button onclick="login()">Entrar</button>
+
+  <p>Cliente: cliente / 1234</p>
+  <p>Admin: admin / 1234</p>
+</div>
+
+<script>
+function login(){
+  const u = user.value
+  const p = pass.value
+
+  if(u=="admin" && p=="1234")
+    window.location="dashboard.html"
+  else if(u=="cliente" && p=="1234")
+    window.location="tienda.html"
+  else
+    alert("Datos incorrectos")
+}
+</script>
+
+</body>
+</html>
