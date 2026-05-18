@@ -1,78 +1,39 @@
-<button onclick="volverTienda()">⬅ Volver a tienda</button>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Carrito</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header><h1>Carrito</h1></header>
+<h1>Tu carrito 🛒</h1>
 
-<div class="container">
-<ul id="lista"></ul>
-<h2 id="total"></h2>
-
-<input id="nombreCliente" placeholder="Tu nombre completo">
-<input id="telefonoCliente" placeholder="Teléfono">
-
-<button onclick="confirmarCompra()">Confirmar compra</button>
+<ul id="listaCarrito"></ul>
+<div class="total-box">
+      <span id="total">$0</span>
 </div>
 
-<script type="module">
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
+<button onclick="confirmarCompra()">Confirmar compra</button>
+<button onclick="window.location='tienda.html'">Volver a tienda</button>
 
-const supabase = createClient("https://eexxczsqyeuyvtahvktj.supabase.co","sb_publishable_zKjJS82J3SNS5_oImGT-Lg_NQIISEFu")
+<div id="datosCliente" style="display:none">
+  <h2>Datos del cliente</h2>
+  <input id="clienteNombre" placeholder="Nombre">
+  <input id="clienteTelefono" placeholder="Teléfono">
+  <button onclick="finalizarCompra()">Finalizar compra</button>
+</div>
 
-const carrito = JSON.parse(localStorage.getItem("carrito")) || []
-let total = 0
+<!-- CHAT -->
+<div class="chatBtn" onclick="toggleChat()">💬</div>
+<div id="chatBox" class="chatBox">
+  <div class="chatHeader">Asistente</div>
+  <div id="chatMensajes" class="chatMensajes"></div>
+  <input id="mensajeInput">
+  <button onclick="enviarMensaje()">Enviar</button>
+</div>
 
-carrito.forEach(item=>{
-  lista.innerHTML += `<li>${item.s} - $${item.p}</li>`
-  total += item.p
-})
-
-total.innerText = "Total: $" + total
-
-async function comprar(){
-
-  if(carrito.length == 0){
-    alert("Carrito vacío")
-    return
-  }
-
-  const nombre = nombreCliente.value
-  const telefono = telefonoCliente.value
-
-  const servicios = carrito.map(i => i.s).join(", ")
-
-  const { error } = await supabase.from("ordenes").insert([{
-    nombre: nombre,
-    servicio: servicios,
-    costo: total,
-    telefono: telefono
-  }])
-
-  if(error){
-    alert("Error al generar orden")
-    console.log(error)
-  }else{
-    alert("Orden enviada al taller 🚗")
-    localStorage.removeItem("carrito")
-    window.location="tienda.html"
-  }
-}
-<section id="carrito" style="display:none">
-  <h2>Tu carrito</h2>
-  <ul id="listaCarrito"></ul>
-  <h3 id="total"></h3>
-
-  <button onclick="volverTienda()">⬅ Volver</button>
-  <button onclick="confirmarCompra()">Confirmar compra</button>
-</section>
-
-window.comprar = comprar
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
+

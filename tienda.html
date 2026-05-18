@@ -1,53 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header><h1>Servicios</h1></header>
+<h1>Servicios del Taller 🔧</h1>
+<link rel="stylesheet" href="style.css">
+<button class="irCarrito" onclick="window.location='carrito.html'">
+Ir al carrito 🛒
+</button>
 
-<nav>
-  <a href="carrito.html">Carrito</a>
-  <a href="chat.html">Chat</a>
-  <a href="index.html">Salir</a>
-</nav>
+<div id="productos" class="grid"></div>
 
-<section id="tienda">
-<h2>Servicios disponibles</h2>
-
-<div class="producto">
-  <img src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png">
-  <h3>Cambio de aceite</h3>
-  <p>$500</p>
-  <button onclick="agregarCarrito('Cambio de aceite',500)">Agregar</button>
+<!-- CHAT -->
+<div class="chatBtn" onclick="toggleChat()">💬</div>
+<div id="chatBox" class="chatBox">
+  <div class="chatHeader">Asistente</div>
+  <div id="chatMensajes" class="chatMensajes"></div>
+  <input id="mensajeInput" placeholder="Escribe tu mensaje">
+  <button onclick="enviarMensaje()">Enviar</button>
 </div>
 
-<div class="producto">
-  <img src="https://cdn-icons-png.flaticon.com/512/1995/1995470.png">
-  <h3>Alineación</h3>
-  <p>$300</p>
-  <button onclick="agregarCarrito('Alineación',300)">Agregar</button>
-</div>
-
-<div class="producto">
-  <img src="https://cdn-icons-png.flaticon.com/512/2967/2967350.png">
-  <h3>Diagnóstico</h3>
-  <p>$250</p>
-  <button onclick="agregarCarrito('Diagnóstico',250)">Agregar</button>
-</div>
-
-<button onclick="verCarrito()">🛒 Ver carrito</button>
-</section>
-
-<script>
-let carrito=JSON.parse(localStorage.getItem("carrito"))||[]
-function agregar(s,p){
- carrito.push({s,p})
- localStorage.setItem("carrito",JSON.stringify(carrito))
- alert("Agregado al carrito")
-}
-</script>
+<script src="script.js"></script>
 </body>
 </html>
