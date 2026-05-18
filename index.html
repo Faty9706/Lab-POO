@@ -5,34 +5,42 @@
 <title>Taller AutoFix</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header><h1>Taller AutoFix</h1></header>
+<div class="login-bg">
 
-<div class="container">
-  <img class="hero" src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e">
-  <h2>Iniciar sesión</h2>
+  <div class="login-card">
+    <h1>Taller AutoFix 🚗</h1>
+    <p>Inicia sesión para continuar</p>
 
-  <input id="user" placeholder="Usuario">
-  <input id="pass" type="password" placeholder="Contraseña">
+    <input id="user" placeholder="Usuario">
+    <input id="pass" type="password" placeholder="Contraseña">
 
-  <button onclick="login()">Entrar</button>
+    <button onclick="login()">Entrar</button>
 
-  <p>Cliente: cliente / 1234</p>
-  <p>Admin: admin / 1234</p>
+    <div class="info">
+      <p><b>Cliente:</b> cliente / 1234</p>
+      <p><b>Admin:</b> admin / 1234</p>
+    </div>
+  </div>
+
 </div>
 
 <script>
 function login(){
-  const u = user.value
-  const p = pass.value
+  const u = document.getElementById("user").value
+  const p = document.getElementById("pass").value
 
-  if(u=="admin" && p=="1234")
+  if(u=="admin" && p=="1234"){
     window.location="dashboard.html"
-  else if(u=="cliente" && p=="1234")
+  }
+  else if(u=="cliente" && p=="1234"){
     window.location="tienda.html"
-  else
+  }
+  else{
     alert("Datos incorrectos")
+  }
 }
 </script>
 
