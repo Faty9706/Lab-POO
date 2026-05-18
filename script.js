@@ -69,10 +69,11 @@ function confirmarCompra(){
     return;
   }
 
-  alert("Compra realizada con éxito 🎉");
-  carrito = [];
-  actualizarCarrito();
-  volverTienda();
+  document.getElementById("carrito").innerHTML = `
+     <h2>🎉 Compra realizada</h2>
+     <p>Nos pondremos en contacto contigo pronto.</p>
+     <button onclick="location.reload()">Volver al inicio</button>
+  `;
 }
 
 // ===============================

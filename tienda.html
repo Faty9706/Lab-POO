@@ -14,11 +14,32 @@
   <a href="index.html">Salir</a>
 </nav>
 
-<div class="container">
-<button onclick="agregar('Cambio de aceite',800)">Cambio aceite $800</button>
-<button onclick="agregar('Afinación',1500)">Afinación $1500</button>
-<button onclick="agregar('Frenos',2000)">Frenos $2000</button>
+<section id="tienda">
+<h2>Servicios disponibles</h2>
+
+<div class="producto">
+  <img src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png">
+  <h3>Cambio de aceite</h3>
+  <p>$500</p>
+  <button onclick="agregarCarrito('Cambio de aceite',500)">Agregar</button>
 </div>
+
+<div class="producto">
+  <img src="https://cdn-icons-png.flaticon.com/512/1995/1995470.png">
+  <h3>Alineación</h3>
+  <p>$300</p>
+  <button onclick="agregarCarrito('Alineación',300)">Agregar</button>
+</div>
+
+<div class="producto">
+  <img src="https://cdn-icons-png.flaticon.com/512/2967/2967350.png">
+  <h3>Diagnóstico</h3>
+  <p>$250</p>
+  <button onclick="agregarCarrito('Diagnóstico',250)">Agregar</button>
+</div>
+
+<button onclick="verCarrito()">🛒 Ver carrito</button>
+</section>
 
 <script>
 let carrito=JSON.parse(localStorage.getItem("carrito"))||[]
